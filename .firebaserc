@@ -1,15 +1,15 @@
 {
   "projects": {
-    "default": "nextjs-template-a762e"
+    "default": "lachmanworkshop-25f31"
   },
   "targets": {
-    "nextjs-template-a762e": {
+    "lachmanworkshop-25f31": {
       "hosting": {
         "production": [
-          "nextjs-template-a762e"
+          "lachmanworkshop-25f31"
         ],
         "qa": [
-          "qa-nextjs-template-a762e"
+          "qa-lachmanworkshop-25f31"
         ]
       }
     }
