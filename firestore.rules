@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Rate limiting collection - only accessible by Firebase Functions
+    match /rateLimits/{document} {
+      allow read, write: if false; // No direct client access
+    }
+    
+    // Newsletter subscribers collection - only accessible by Firebase Functions
+    match /newsletter_subscribers/{document} {
+      allow read, write: if false; // No direct client access
+    }
+    
+    // Deny all other access by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+} 

@@ -1,0 +1,107 @@
+{
+  "template": {
+    "name": "Next.js + Firebase Template",
+    "version": "1.0.0",
+    "description": "A production-ready template for building modern web applications with Next.js 15, Firebase, and comprehensive security features.",
+    "author": "Template Creator",
+    "license": "MIT"
+  },
+  "features": {
+    "frontend": {
+      "framework": "Next.js 15",
+      "ui": "React 19 + TypeScript",
+      "styling": "Bootstrap 5",
+      "components": [
+        "Navigation",
+        "Hero",
+        "About",
+        "Product Showcase",
+        "Newsletter Signup",
+        "Contact",
+        "Footer"
+      ]
+    },
+    "backend": {
+      "platform": "Firebase",
+      "services": [
+        "Hosting",
+        "Functions",
+        "Firestore"
+      ],
+      "integrations": [
+        "Mailchimp API",
+        "reCAPTCHA v2"
+      ]
+    },
+    "security": [
+      "Rate limiting (3 requests per 15 minutes per IP)",
+      "reCAPTCHA protection",
+      "Domain restrictions",
+      "Input validation",
+      "Secure API key storage"
+    ],
+    "deployment": {
+      "ci_cd": "GitHub Actions",
+      "hosting": "Firebase Hosting",
+      "preview": "PR deployments"
+    }
+  },
+  "requirements": {
+    "node": "20+",
+    "firebase_functions_node": "22",
+    "firebase_plan": "Blaze (pay-as-you-go)",
+    "accounts": [
+      "Firebase",
+      "Mailchimp",
+      "Google reCAPTCHA",
+      "GitHub"
+    ]
+  },
+  "customization": {
+    "content": {
+      "text": "Update component files in src/components/",
+      "images": "Replace files in public/",
+      "styling": "Modify src/app/globals.css and Bootstrap classes"
+    },
+    "configuration": {
+      "firebase": "Update .firebaserc and firebase.json",
+      "environment": "Set variables in Firebase Functions",
+      "recaptcha": "Update site key in Newsletter.tsx"
+    }
+  },
+  "setup_steps": [
+    "Run setup-template.sh for automated configuration",
+    "Create Firebase project and enable services",
+    "Set up Mailchimp account and get API credentials",
+    "Configure reCAPTCHA keys",
+    "Set environment variables in Firebase Functions",
+    "Customize content and branding",
+    "Deploy to Firebase Hosting"
+  ],
+  "file_structure": {
+    "src/": "Main application code",
+    "src/app/": "Next.js app directory",
+    "src/components/": "React components",
+    "functions/": "Firebase Functions",
+    "public/": "Static assets",
+    ".github/workflows/": "CI/CD pipelines"
+  },
+  "environment_variables": {
+    "MAILCHIMP_API_KEY": "Mailchimp API key for newsletter integration",
+    "MAILCHIMP_LIST_ID": "Mailchimp audience/list ID",
+    "MAILCHIMP_SERVER_PREFIX": "Mailchimp server prefix (e.g., us1)",
+    "RECAPTCHA_SECRET_KEY": "reCAPTCHA secret key for server verification"
+  },
+  "deployment_commands": {
+    "development": "yarn dev",
+    "build": "yarn build",
+    "deploy_all": "firebase deploy",
+    "deploy_hosting": "firebase deploy --only hosting",
+    "deploy_functions": "firebase deploy --only functions"
+  },
+  "monitoring": {
+    "firebase_console": "View logs and analytics",
+    "function_logs": "firebase functions:log",
+    "local_testing": "firebase emulators:start"
+  }
+}

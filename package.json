@@ -1,0 +1,53 @@
+{
+  "name": "nextjs-firebase-template",
+  "version": "1.0.0",
+  "description": "A production-ready template for building modern web applications with Next.js 15, Firebase, and comprehensive security features. Easy Firebase integration with environment variables.",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "clean": "rm -rf .next && rm -rf node_modules && rm -rf package-lock.json",
+    "deploy:hosting": "firebase deploy --only hosting",
+    "deploy:hosting:prod": "firebase target:apply hosting production nextjs-template-a762e && firebase deploy --only hosting:production",
+    "deploy:hosting:qa": "firebase target:apply hosting qa qa-nextjs-template-a762e && firebase deploy --only hosting:qa",
+    "deploy:functions": "firebase deploy --only functions",
+    "deploy:all": "firebase deploy",
+    "setup": "./setup-template.sh",
+    "test:functions": "firebase emulators:start --only functions",
+    "test:all": "firebase emulators:start"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "firebase": "^11.9.0",
+    "next": "15.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sass": "^1.93.2"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.3",
+    "typescript": "^5"
+  },
+  "keywords": [
+    "nextjs",
+    "firebase",
+    "template",
+    "react",
+    "typescript",
+    "newsletter",
+    "mailchimp",
+    "recaptcha",
+    "bootstrap",
+    "environment-variables",
+    "easy-setup"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

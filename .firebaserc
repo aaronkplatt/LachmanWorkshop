@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "nextjs-template-a762e"
+  },
+  "targets": {
+    "nextjs-template-a762e": {
+      "hosting": {
+        "production": [
+          "nextjs-template-a762e"
+        ],
+        "qa": [
+          "qa-nextjs-template-a762e"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

@@ -1,0 +1,103 @@
+name: Deploy to Firebase
+
+on:
+  push:
+    branches:
+      - main      # Deploy to production
+      - develop   # Deploy to QA
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  # Build and test job
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'yarn'
+
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+
+    - name: Install Firebase CLI
+      run: yarn global add firebase-tools
+
+    - name: Build application
+      run: yarn build
+
+    - name: Run linting
+      run: yarn lint
+
+    # Deploy to QA (develop branch)
+    - name: Deploy to QA
+      if: github.ref == 'refs/heads/develop'
+      run: |
+        echo "Setting up Firebase authentication..."
+        echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" > $HOME/firebase-service-account.json
+        export GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase-service-account.json
+        
+        echo "Verifying service account file..."
+        ls -la $HOME/firebase-service-account.json
+        wc -l $HOME/firebase-service-account.json
+        
+        echo "Setting Firebase project..."
+        firebase use nextjs-template-a762e --token "${{ secrets.FIREBASE_TOKEN }}"
+        
+        echo "Applying hosting target..."
+        firebase target:apply hosting qa qa-nextjs-template-a762e --token "${{ secrets.FIREBASE_TOKEN }}"
+        
+        echo "Deploying to QA..."
+        firebase deploy --only hosting:qa --token "${{ secrets.FIREBASE_TOKEN }}"
+
+    # Deploy to Production (main branch)
+    - name: Deploy to Production
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "Setting up Firebase authentication..."
+        echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" > $HOME/firebase-service-account.json
+        export GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase-service-account.json
+        
+        echo "Verifying service account file..."
+        ls -la $HOME/firebase-service-account.json
+        wc -l $HOME/firebase-service-account.json
+        
+        echo "Setting Firebase project..."
+        firebase use nextjs-template-a762e --token "${{ secrets.FIREBASE_TOKEN }}"
+        
+        echo "Applying hosting target..."
+        firebase target:apply hosting production nextjs-template-a762e --token "${{ secrets.FIREBASE_TOKEN }}"
+        
+        echo "Deploying to production..."
+        firebase deploy --only hosting:production --token "${{ secrets.FIREBASE_TOKEN }}"
+
+  # Notify deployment status
+  notify:
+    runs-on: ubuntu-latest
+    needs: [build]
+    if: always()
+    
+    steps:
+    - name: Notify Success
+      if: needs.build.result == 'success'
+      run: |
+        echo "✅ Deployment successful!"
+        if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+          echo "🚀 Production deployment completed"
+        else
+          echo "🧪 QA deployment completed"
+        fi
+
+    - name: Notify Failure
+      if: needs.build.result == 'failure'
+      run: |
+        echo "❌ Deployment failed!"
+        exit 1
