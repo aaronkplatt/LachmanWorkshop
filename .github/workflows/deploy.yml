@@ -50,10 +50,10 @@ jobs:
         wc -l $HOME/firebase-service-account.json
         
         echo "Setting Firebase project..."
-        firebase use nextjs-template-a762e --token "${{ secrets.FIREBASE_TOKEN }}"
+        firebase use lachmanworkshop-25f31 --token "${{ secrets.FIREBASE_TOKEN }}"
         
         echo "Applying hosting target..."
-        firebase target:apply hosting qa qa-nextjs-template-a762e --token "${{ secrets.FIREBASE_TOKEN }}"
+        firebase target:apply hosting qa qa-lachmanworkshop-25f31 --token "${{ secrets.FIREBASE_TOKEN }}"
         
         echo "Deploying to QA..."
         firebase deploy --only hosting:qa --token "${{ secrets.FIREBASE_TOKEN }}"
@@ -71,10 +71,10 @@ jobs:
         wc -l $HOME/firebase-service-account.json
         
         echo "Setting Firebase project..."
-        firebase use nextjs-template-a762e --token "${{ secrets.FIREBASE_TOKEN }}"
+        firebase use lachmanworkshop-25f31 --token "${{ secrets.FIREBASE_TOKEN }}"
         
         echo "Applying hosting target..."
-        firebase target:apply hosting production nextjs-template-a762e --token "${{ secrets.FIREBASE_TOKEN }}"
+        firebase target:apply hosting production lachmanworkshop-25f31 --token "${{ secrets.FIREBASE_TOKEN }}"
         
         echo "Deploying to production..."
         firebase deploy --only hosting:production --token "${{ secrets.FIREBASE_TOKEN }}"
