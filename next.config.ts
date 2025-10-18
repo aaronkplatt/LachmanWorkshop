@@ -14,24 +14,6 @@ const nextConfig: NextConfig = {
       'firebase-admin': 'firebase-admin'
     });
 
-    // Suppress Sass deprecation warnings
-    config.module.rules.push({
-      test: /\.scss$/,
-      use: [
-        'style-loader',
-        'css-loader',
-        {
-          loader: 'sass-loader',
-          options: {
-            sassOptions: {
-              quietDeps: true,
-              silenceDeprecations: ['legacy-js-api']
-            }
-          }
-        }
-      ]
-    });
-
     return config;
   },
   // Exclude functions from TypeScript compilation
