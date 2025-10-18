@@ -4,40 +4,47 @@
 
 // Color Palette
 :root {
-  // Primary Colors
-  --color-primary: #ffc107; // Bootstrap warning yellow (your current primary)
-  --color-primary-dark: #e0a800; // Darker shade
-  --color-primary-light: #ffcd39; // Lighter shade
+  // Custom Brand Colors
+  --moss-green: #939f79ff;
+  --sage: #a3ad88ff;
+  --sage-2: #bdbd9bff;
+  --ecru: #b19f77ff;
+  --lion: #a9936aff;
 
-  // Secondary Colors
-  --color-secondary: #6c757d; // Bootstrap secondary gray
-  --color-secondary-dark: #545b62; // Darker shade
-  --color-secondary-light: #adb5bd; // Lighter shade
+  // Primary Colors (using moss-green as primary)
+  --color-primary: var(--moss-green);
+  --color-primary-dark: #7a8a5f; // Darker moss-green
+  --color-primary-light: #a8b48f; // Lighter moss-green
 
-  // Accent Colors
-  --color-accent: #0d6efd; // Bootstrap primary blue
-  --color-accent-dark: #0b5ed7; // Darker shade
-  --color-accent-light: #3d8bfd; // Lighter shade
+  // Secondary Colors (using sage as secondary)
+  --color-secondary: var(--sage);
+  --color-secondary-dark: #8a956e; // Darker sage
+  --color-secondary-light: #b8c2a2; // Lighter sage
 
-  // Success Colors
-  --color-success: #198754; // Bootstrap success green
-  --color-success-dark: #146c43; // Darker shade
-  --color-success-light: #75b798; // Lighter shade
+  // Accent Colors (using ecru as accent)
+  --color-accent: var(--ecru);
+  --color-accent-dark: #9a8a5f; // Darker ecru
+  --color-accent-light: #c8b48f; // Lighter ecru
 
-  // Danger Colors
-  --color-danger: #dc3545; // Bootstrap danger red
-  --color-danger-dark: #bb2d3b; // Darker shade
-  --color-danger-light: #f1aeb5; // Lighter shade
+  // Success Colors (using sage-2)
+  --color-success: var(--sage-2);
+  --color-success-dark: #a8a87b; // Darker sage-2
+  --color-success-light: #d2d2bb; // Lighter sage-2
 
-  // Warning Colors
-  --color-warning: #fd7e14; // Bootstrap warning orange
-  --color-warning-dark: #e8590c; // Darker shade
-  --color-warning-light: #ffb366; // Lighter shade
+  // Danger Colors (using lion)
+  --color-danger: var(--lion);
+  --color-danger-dark: #8f7a4a; // Darker lion
+  --color-danger-light: #c3ac8a; // Lighter lion
 
-  // Info Colors
-  --color-info: #0dcaf0; // Bootstrap info cyan
-  --color-info-dark: #0aa2c0; // Darker shade
-  --color-info-light: #6edff6; // Lighter shade
+  // Warning Colors (using ecru)
+  --color-warning: var(--ecru);
+  --color-warning-dark: #9a8a5f; // Darker ecru
+  --color-warning-light: #c8b48f; // Lighter ecru
+
+  // Info Colors (using sage-2)
+  --color-info: var(--sage-2);
+  --color-info-dark: #a8a87b; // Darker sage-2
+  --color-info-light: #d2d2bb; // Lighter sage-2
 
   // Neutral Colors
   --color-white: #ffffff;
@@ -56,8 +63,8 @@
 
   // Background Colors
   --bg-primary: var(--color-white);
-  --bg-secondary: var(--color-light);
-  --bg-dark: var(--color-dark);
+  --bg-secondary: var(--sage-2); // Using sage-2 as secondary background
+  --bg-dark: var(--moss-green); // Using moss-green as dark background
   --bg-primary-section: var(--color-primary);
   --bg-accent-section: var(--color-accent);
 
@@ -163,14 +170,35 @@
   --breakpoint-xxl: 1400px;
 }
 
+// Override Bootstrap's CSS custom properties
+:root {
+  // Override Bootstrap's default color variables
+  --bs-primary: #939f79; // moss-green (now primary)
+  --bs-secondary: #a3ad88; // sage (now secondary)
+  --bs-success: #bdbd9b; // sage-2 (now success)
+  --bs-info: #b19f77; // ecru (now info)
+  --bs-warning: #a9936a; // lion (now warning)
+  --bs-danger: #b19f77; // ecru (now danger)
+  --bs-light: #bdbd9b; // sage-2
+  --bs-dark: #939f79; // moss-green
+}
+
 // Sass Variables (for use in SCSS files - actual color values)
-$primary: #ffc107;
-$secondary: #6c757d;
-$accent: #0d6efd;
-$success: #198754;
-$danger: #dc3545;
-$warning: #fd7e14;
-$info: #0dcaf0;
+$primary: #939f79; // moss-green (now primary)
+$secondary: #a3ad88; // sage (now secondary)
+$success: #bdbd9b; // sage-2 (now success)
+$info: #b19f77; // ecru (now info)
+$warning: #a9936a; // lion (now warning)
+$danger: #b19f77; // ecru (now danger)
+$light: #bdbd9b; // sage-2
+$dark: #939f79; // moss-green
+
+// Custom brand colors
+$moss-green: #939f79;
+$sage: #a3ad88;
+$sage-2: #bdbd9b;
+$ecru: #b19f77;
+$lion: #a9936a;
 
 $white: #ffffff;
 $light: #f8f9fa;
